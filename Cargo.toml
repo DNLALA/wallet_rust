@@ -1,0 +1,11 @@
+[package]
+name = "trust-core-server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix-web = "4.0"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] } 
+wallet-core-rs = { path = "wallet-core/rust/wallet_core_rs", features = ["keypair", "utils", "bitcoin", "evm"] }
+thiserror = "1.0"

@@ -1,0 +1,49 @@
+class: TWTONAddressConverter
+static_functions:
+- name: ToBoc
+  rust_name: tw_ton_address_converter_to_boc
+  args:
+  - name: address
+    ty: Nonnull < TWString >
+  return_type: NullableMut < TWString >
+  docs:
+  - Converts a TON user address into a Bag of Cells (BoC) with a single root Cell.
+  - The function is mostly used to request a Jetton user address via `get_wallet_address` RPC.
+  - https://docs.ton.org/develop/dapps/asset-processing/jettons#retrieving-jetton-wallet-addresses-for-a-given-user
+  - ''
+  - \param address Address to be converted into a Bag Of Cells (BoC).
+  - \return Pointer to a base64 encoded Bag Of Cells (BoC). Null if invalid address provided.
+- name: FromBoc
+  rust_name: tw_ton_address_converter_from_boc
+  args:
+  - name: boc
+    ty: Nonnull < TWString >
+  return_type: NullableMut < TWString >
+  docs:
+  - Parses a TON address from a Bag of Cells (BoC) with a single root Cell.
+  - The function is mostly used to parse a Jetton user address received on `get_wallet_address` RPC.
+  - https://docs.ton.org/develop/dapps/asset-processing/jettons#retrieving-jetton-wallet-addresses-for-a-given-user
+  - ''
+  - \param boc Base64 encoded Bag Of Cells (BoC).
+  - \return Pointer to a Jetton address.
+- name: ToUserFriendly
+  rust_name: tw_ton_address_converter_to_user_friendly
+  args:
+  - name: address
+    ty: Nonnull < TWString >
+  - name: bounceable
+    ty: bool
+  - name: testnet
+    ty: bool
+  return_type: NullableMut < TWString >
+  docs:
+  - Converts any TON address format to user friendly with the given parameters.
+  - ''
+  - \param address raw or user-friendly address to be converted.
+  - \param bounceable whether the result address should be bounceable.
+  - \param testnet whether the result address should be testnet.
+  - \return user-friendly address str.
+constructors: null
+destructor: null
+methods: null
+properties: null
